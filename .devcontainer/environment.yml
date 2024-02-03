@@ -1,0 +1,17 @@
+name: build  # Name of the conda environment
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - ipykernel
+  - ipywidgets
+  - breathe
+  - cffi
+  - colorama
+  - cython
+  - docopt
+  - numpy
+  - pyyaml
+  - sphinx
+  - typer[all]
