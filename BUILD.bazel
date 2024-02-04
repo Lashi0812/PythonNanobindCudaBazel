@@ -1,0 +1,6 @@
+py_binary(
+    name = "test",
+    deps = ["//ext:ext"],
+    srcs = ["test.py"],
+    visibility = ["//visibility:public"],
+)

@@ -1,0 +1,22 @@
+load("@tsl//tsl:tsl.bzl", pybind_extension = "tsl_pybind_extension_opensource")
+load("@local_config_cuda//cuda:build_defs.bzl", cuda_default_copts = "cuda_default_copts")
+
+pybind_extension(
+    name = "ext",
+    srcs = ["ext.cu.cc"],
+    copts = [
+        "-fexceptions",
+        "-fno-strict-aliasing",
+    ] + cuda_default_copts(),
+    enable_stub_generation = True,
+    features = ["-use_header_modules"],
+    module_name = "ext",
+    deps = [
+        "@nanobind",
+        "@local_config_cuda//cuda:cudart",
+
+    ],
+    visibility=["//visibility:public"]
+)
+
+
