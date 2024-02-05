@@ -1,0 +1,41 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    
+    {
+      "name": "CUDA C++: Attach",
+      "type": "cuda-gdb",
+      "request": "attach",
+      "debuggerPath": "/usr/local/cuda-12.1/bin/cuda-gdb",
+      "processId": "${command:cuda.pickProcess}",
+      // "additionalSOLibSearchPath": "/workspaces/PythonNanobindCudaBazel/bazel-bin/test.runfiles/__main__/ext",
+      "initCommands": [
+        // "cd /workspaces/PythonNanobindCudaBazel/ext",
+        // "directory /workspaces/PythonNanobindCudaBazel/ext/",
+        // "set solib-search-path \"/workspaces/PythonNanobindCudaBazel/bazel-bin/test.runfiles/__main__/ext\"",
+        // "set breakpoint pending on",
+        // "break ext.cu.cc:12",
+        "set substitute-path /proc/self/cwd /workspaces/PythonNanobindCudaBazel"
+        // "break gpu_add"
+        // "show cwd"
+      ],
+      // "linux": {
+      //   "sourceFileMap": {
+      //      "/proc/self/cwd": "${workspaceFolder}",
+      //   }
+      // }
+    },
+    {
+      "name": "Python: Current File",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}/bazel-bin/test.runfiles/__main__"
+      },
+      // "justMyCode": false
+    },
+  
+  ]
+}

@@ -1,19 +1,22 @@
 {
-    "name":"Python NCB",
+    "name": "Python NCB",
     "build": {
         "dockerfile": "Dockerfile",
-        "context": ".."},
+        "context": ".."
+    },
     "customizations": {
         "vscode": {
             "extensions": [
-                "ms-vscode.cpptools",
                 "eamodio.gitlens",
                 "streetsidesoftware.code-spell-checker",
                 "llvm-vs-code-extensions.vscode-clangd",
                 "ms-python.python",
-                "StackBuild.bazel-stack-vscode",
                 "ionutvmi.path-autocomplete",
-                "charliermarsh.ruff"
+                "charliermarsh.ruff",
+                "NVIDIA.nsight-vscode-edition",
+                "vadimcn.vscode-lldb",
+                "BazelBuild.vscode-bazel",
+                "yzhang.markdown-all-in-one"
             ]
         }
     },
@@ -27,5 +30,15 @@
         "source=/mnt/drive/data,target=/mnt/data,type=bind,consistency=cached",
         "source=projectname-bashhistory,target=/commandhistory,type=volume"
     ],
-    "runArgs": ["--gpus","all"]
+    "runArgs": [
+        "--gpus",
+        "all",
+        "--privileged"
+    ],
+    "capAdd": [
+        "SYS_PTRACE"
+    ],
+    "securityOpt": [
+        "seccomp=unconfined"
+    ]
 }

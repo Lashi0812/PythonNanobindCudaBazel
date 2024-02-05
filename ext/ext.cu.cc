@@ -1,12 +1,20 @@
 #include "nanobind/nanobind.h"
 
-
 namespace nb = nanobind;
 using namespace nb::literals;
 
-int cpu_add(int a, int b = 1) { return a + b; }
+int cpu_add(int a, int b = 1) {
+    int c = a+ b;
+     return c;     
+     }
 
-__global__ void add_kernel(const int *a, const int *b, int *c) { c[0] = a[0] + b[0]; }
+__global__ void add_kernel(const int *a, const int *b, int *c) { 
+    int e,g,t;
+    e = 10;
+    g = 3;
+    t = e+g;
+    c[0] = a[0] + b[0]; 
+    }
 
 int gpu_add(int a, int b) {
     int  c;

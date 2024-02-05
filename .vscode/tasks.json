@@ -1,0 +1,11 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "Generate compile commands",
+			"command": "bazel run @hedron_compile_commands//:refresh_all",
+			"group": "build"
+		}
+	]
+}
