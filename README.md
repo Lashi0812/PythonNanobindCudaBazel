@@ -3,6 +3,7 @@
   - [Missing -G flag in tsl (Tensor Standard library)](#missing--g-flag-in-tsl-tensor-standard-library)
     - [Generate a Git Diff](#generate-a-git-diff)
     - [Use patch file in bazel](#use-patch-file-in-bazel)
+  - [Alternative way to add nvcc\_flags such -G](#alternative-way-to-add-nvcc_flags-such--g)
   - [Debugging python ,C++,Cuda](#debugging-python-ccuda)
     - [CUDA C++: Attach](#cuda-c-attach)
     - [Python: Current File](#python-current-file)
@@ -42,6 +43,27 @@ Once we generated the command , we specify the patch file in `http_archive`, thi
  patch_file = [
             "//third_party/xla:tsl.patch"
         ]
+```
+
+## Alternative way to add nvcc_flags such -G
+
+Instead of using patch we can use `-nvcc_options` flag to specify the nvcc options.
+
+```python
+# these LOC from local_config_cuda/crosstool/clang/bin/crosstool_wrapper_driver_is_not_gcc file
+nvcc_compiler_options = GetNvccOptions(argv)
+parser.add_argument('-nvcc_options', nargs='*', action='append')
+' '.join(['--'+a for a in options])
+```
+
+we need pass `long-form name` after the `-nvcc_options`
+
+```python
+copts = [
+        "-fexceptions",
+        "-fno-strict-aliasing",
+        "-nvcc_options","device-debug"
+    ]
 ```
 
 ## Debugging python ,C++,Cuda  

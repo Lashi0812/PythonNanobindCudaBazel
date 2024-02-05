@@ -2,7 +2,7 @@
 XLA Workspace
 """
 
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+# load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("//third_party:repo.bzl", "tf_http_archive", "tf_mirror_urls")
 
 XLA_COMMIT = "492c50766d96ecce2e57447d12c34feaa4acacaf"
@@ -14,9 +14,9 @@ def repo():
         sha256 = XLA_SHA256,
         strip_prefix = "xla-{commit}".format(commit = XLA_COMMIT),
         urls = tf_mirror_urls("https://github.com/openxla/xla/archive/{commit}.tar.gz".format(commit = XLA_COMMIT)),
-        patch_file = [
-            "//third_party/xla:tsl.patch"
-        ]
+        # patch_file = [
+        #     "//third_party/xla:tsl.patch"
+        # ]
     )
 
 # def repo():

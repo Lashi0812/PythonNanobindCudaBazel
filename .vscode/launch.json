@@ -32,7 +32,8 @@
       "program": "${file}",
       "console": "integratedTerminal",
       "env": {
-        "PYTHONPATH": "${workspaceFolder}/bazel-bin/test.runfiles/__main__"
+        "PYTHONPATH": "${workspaceFolder}/bazel-bin/test.runfiles/__main__",
+        "BUILD_WORKSPACE_DIRECTORY" : "${workspaceFolder}"
       },
       // "justMyCode": false
     },
