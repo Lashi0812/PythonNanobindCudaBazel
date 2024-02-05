@@ -1,5 +1,5 @@
-load("@tsl//tsl:tsl.bzl", pybind_extension = "tsl_pybind_extension_opensource")
 load("@local_config_cuda//cuda:build_defs.bzl", cuda_default_copts = "cuda_default_copts")
+load("@tsl//tsl:tsl.bzl", pybind_extension = "tsl_pybind_extension_opensource")
 
 pybind_extension(
     name = "ext",
@@ -7,6 +7,7 @@ pybind_extension(
     copts = [
         "-fexceptions",
         "-fno-strict-aliasing",
+        "--cuda_log"
     ] + cuda_default_copts(),
     enable_stub_generation = True,
     features = ["-use_header_modules"],

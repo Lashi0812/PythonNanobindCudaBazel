@@ -1,0 +1,13 @@
+diff --git a/third_party/tsl/third_party/gpus/crosstool/clang/bin/crosstool_wrapper_driver_is_not_gcc.tpl b/third_party/tsl/third_party/gpus/crosstool/clang/bin/crosstool_wrapper_driver_is_not_gcc.tpl
+index 0da1d7b58..737372507 100755
+--- a/third_party/tsl/third_party/gpus/crosstool/clang/bin/crosstool_wrapper_driver_is_not_gcc.tpl
++++ b/third_party/tsl/third_party/gpus/crosstool/clang/bin/crosstool_wrapper_driver_is_not_gcc.tpl
+@@ -213,7 +213,7 @@ def InvokeNvcc(argv, log=False):
+     return 1
+ 
+   opt = (' -O2' if (len(opt_option) > 0 and int(opt_option[0]) > 0)
+-         else ' -g')
++         else ' -g -G')
+ 
+   includes = (' -I ' + ' -I '.join(include_options)
+               if len(include_options) > 0
