@@ -1,0 +1,4 @@
+CompileFlags:
+  Remove:
+    - -Xcuda-fatbinary*
+    - -nvcc_options*
