@@ -7,7 +7,7 @@ pybind_extension(
     copts = [
         "-fexceptions",
         "-fno-strict-aliasing",
-        "-nvcc_options","device-debug",
+        # "-nvcc_options=device-debug",
         # "--cuda_log"
     ] + cuda_default_copts(),
     enable_stub_generation = True,

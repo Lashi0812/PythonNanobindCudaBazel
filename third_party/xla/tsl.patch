@@ -1,5 +1,5 @@
 diff --git a/third_party/tsl/third_party/gpus/crosstool/clang/bin/crosstool_wrapper_driver_is_not_gcc.tpl b/third_party/tsl/third_party/gpus/crosstool/clang/bin/crosstool_wrapper_driver_is_not_gcc.tpl
-index 0da1d7b58..87e964579 100755
+index 0da1d7b58..a7d721926 100755
 --- a/third_party/tsl/third_party/gpus/crosstool/clang/bin/crosstool_wrapper_driver_is_not_gcc.tpl
 +++ b/third_party/tsl/third_party/gpus/crosstool/clang/bin/crosstool_wrapper_driver_is_not_gcc.tpl
 @@ -265,7 +265,7 @@ def InvokeNvcc(argv, log=False):
@@ -11,12 +11,24 @@ index 0da1d7b58..87e964579 100755
      # Generate the dependency file
      depfile = depfiles[0]
      cmd = (NVCC_PATH + ' ' + nvccopts +
-@@ -286,6 +286,9 @@ def InvokeNvcc(argv, log=False):
+@@ -286,6 +286,21 @@ def InvokeNvcc(argv, log=False):
  
    # TODO(zhengxq): for some reason, 'gcc' needs this help to find 'as'.
    # Need to investigate and fix.
 +  if "-generate_command" in argv:
-+    print(cmd.replace("-generate_command",""))
++    cmd_list = [NVCC_PATH] 
++    cmd_list += nvccopts.split()
++    cmd_list += ["--compiler-options"]
++    cmd_list += host_compiler_options.replace("-generate_command","").split()
++    cmd_list += ["-fPIC"]
++    cmd_list += [f"--compiler-bindir={HOST_COMPILER_PATH}"]
++    cmd_list += ["-I","."]
++    cmd_list += ["-x","cu"]
++    cmd_list += [opt]
++    cmd_list += includes.split()
++    cmd_list += ["-c"] + srcs.split()
++    cmd_list += out.split()
++    print(cmd_list)
 +    return 0
    cmd = 'PATH=' + PREFIX_DIR + ':$PATH ' + cmd
    if log: Log(cmd)
