@@ -1,0 +1,13 @@
+py_binary(
+    name = "build_wheel",
+    srcs = ["build_wheel.py"],
+    data = [
+        "LICENSE.txt",
+        "README.md",
+        "pyproject.toml",
+        "//ext",
+    ],
+    deps = [
+        "@bazel_tools//tools/python/runfiles",
+    ],
+)

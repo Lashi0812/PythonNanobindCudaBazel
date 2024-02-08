@@ -16,7 +16,9 @@
                 "NVIDIA.nsight-vscode-edition",
                 "vadimcn.vscode-lldb",
                 "BazelBuild.vscode-bazel",
-                "yzhang.markdown-all-in-one"
+                "yzhang.markdown-all-in-one",
+                "tamasfe.even-better-toml",
+                "StackBuild.bazel-stack-vscode"
             ]
         }
     },

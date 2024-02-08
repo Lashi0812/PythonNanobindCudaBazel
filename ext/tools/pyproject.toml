@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "PythonNCB"
+version = "0.0.1"
+description = "Simple Demo for extending the python with nanobind and bazel"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE.txt" }
+keywords = ["Extending Python", "bazel", "Nanobind", "C++", "Cuda"]
+authors = [{ email = "lashi0812@gmail.com" }, { name = "lashi" }]
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: C++",
+    "Environment :: GPU :: NVIDIA CUDA",
+]
+
+[project.urls]
+repository = "https://github.com/Lashi0812/PythonNanobindCudaBazel"
+
+[tool.setuptools]
+packages = ["ext"]
+
+[tool.setuptools.package-data]
+ext = ["*.so"]
